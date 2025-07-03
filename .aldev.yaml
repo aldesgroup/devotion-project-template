@@ -1,0 +1,28 @@
+appname: DevotionProjectTemplate
+languages: fr,de
+#IFNATIVE native:
+#IFNATIVE     srcdir: native
+#IFNATIVE     i18n:
+#IFNATIVE         links:
+#IFNATIVE             - https://sheets.googleapis.com/v4/spreadsheets/13wVHCo7x0bu4Gdtn5rEvr5OsddVEK0rzVpBbqESTpqE/values/goaldn?key=AIzaSyAFb8qAmo3Wva5cjCg5f-gQ8tNDF6D7QzE
+#IFNATIVE         keysize: 48
+#IFNATIVE         folder: locales
+#IFNATIVE     datadir: data
+#IFAPI api:
+#IFAPI     srcdir: api
+#IFAPI     bindir: ../bin
+#IFAPI     config: config.yaml
+#IFAPI     port: 42042
+#IFAPI     i18n:
+#IFAPI         links:
+#IFAPI             - https://sheets.googleapis.com/v4/spreadsheets/13wVHCo7x0bu4Gdtn5rEvr5OsddVEK0rzVpBbqESTpqE/values/goaldn?key=AIzaSyAFb8qAmo3Wva5cjCg5f-gQ8tNDF6D7QzE
+#IFAPI         keysize: 48
+#IFAPI         folder: translations
+#IFAPI     datadir: data
+vendors:
+    - repo: github.com/aldesgroup/goaldn
+      version: latest
+      from: lib
+      to: native/src/vendor
+deploying:
+    dir: deploy
