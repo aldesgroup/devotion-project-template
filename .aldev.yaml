@@ -1,28 +1,64 @@
+# ============================================================= #
+# Configuration file about how we're developing the app called: #
+# ============================================================= #
 appname: DevotionProjectTemplate
+
 languages: fr,de
-#IFNATIVE native:
-#IFNATIVE     srcdir: native
-#IFNATIVE     i18n:
-#IFNATIVE         links:
-#IFNATIVE             - https://sheets.googleapis.com/v4/spreadsheets/13wVHCo7x0bu4Gdtn5rEvr5OsddVEK0rzVpBbqESTpqE/values/goaldn?key=AIzaSyAFb8qAmo3Wva5cjCg5f-gQ8tNDF6D7QzE
-#IFNATIVE         keysize: 48
-#IFNATIVE         folder: locales
-#IFNATIVE     datadir: data
-#IFAPI api:
-#IFAPI     srcdir: api
-#IFAPI     bindir: ../bin
-#IFAPI     config: config.yaml
-#IFAPI     port: 42042
-#IFAPI     i18n:
-#IFAPI         links:
-#IFAPI             - https://sheets.googleapis.com/v4/spreadsheets/13wVHCo7x0bu4Gdtn5rEvr5OsddVEK0rzVpBbqESTpqE/values/goaldn?key=AIzaSyAFb8qAmo3Wva5cjCg5f-gQ8tNDF6D7QzE
-#IFAPI         keysize: 48
-#IFAPI         folder: translations
-#IFAPI     datadir: data
-vendors:
-    - repo: github.com/aldesgroup/goaldn
-      version: latest
-      from: lib
-      to: native/src/vendor
+
+api:
+    srcdir: api
+    bindir: ../bin
+    config: apiconf.yaml
+    port: 42042
+    i18n:
+        links:
+            - https://sheets.googleapis.com/v4/spreadsheets/13wVHCo7x0bu4Gdtn5rEvr5OsddVEK0rzVpBbqESTpqE/values/goaldn?key=AIzaSyAFb8qAmo3Wva5cjCg5f-gQ8tNDF6D7QzE
+        keysize: 48
+        folder: translations
+    datadir: data
+    watchalso:
+        - ../../open/goald
+        - unknown_project
+
 deploying:
     dir: deploy
+
+# native:
+#     srcdir: native
+#     i18n:
+#         links:
+#             - https://sheets.googleapis.com/v4/spreadsheets/13wVHCo7x0bu4Gdtn5rEvr5OsddVEK0rzVpBbqESTpqE/values/goaldn?key=AIzaSyAFb8qAmo3Wva5cjCg5f-gQ8tNDF6D7QzE
+#         keysize: 48
+#         folder: locales
+#     datadir: data
+
+# vendors:
+#     - repo: github.com/aldesgroup/goaldn
+#       version: latest
+#       from: lib
+#       to: native/src/vendor
+
+codeswaps:
+    - from: "api"
+      for: ["*.mod"]
+      do:
+          - replace: "// replace github.com/aldesgroup/goald => ../../../open/goald"
+            with: "replace github.com/aldesgroup/goald => ../../../open/goald"
+            eofcom: true
+    # - from: "."
+    #   for: ["tailwind.config.ts"]
+    #   do:
+    #       - replace: '"./src/vendor/emeraldr/styles/aldes-preset"'
+    #         with: '"../../emeraldr/lib/styles/aldes-preset"'
+    # - from: "."
+    #   for: ["*.ts", "*.tsx"]
+    #   do:
+    #       - replace: '"~/vendor/emeraldr"'
+    #         with: '"~/../../../emeraldr/lib"'
+    #       - replace: '"~/vendor/goaldr"'
+    #         with: '"~/../../../goaldr/lib"'
+    # - from: "../emeraldr"
+    #   for: ["*.ts", "*.tsx"]
+    #   do:
+    #       - replace: '"~/vendor/goaldr"'
+    #         with: '"~/../../../goaldr/lib"'

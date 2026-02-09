@@ -1,0 +1,23 @@
+# this is the base configuration, which can be used as is for local development;
+# our dev server (Tilt) transforms it into a configmap which must be "Kustomized"
+# for the remote environments: sandbox, staging, production
+Common:
+    env: dev
+    http:
+        port: 55555
+        apiPath: /rest
+    # databases:
+    #     - DbID: main
+    #       DbType: sqlserver
+    #       DbPort: 1433
+    #       DbName: ber-staging
+    #       DbHost: acp-sqlserver.database.windows.net
+    #       User: ber-ws-staging
+    #       Password: *****
+    dataloaders:
+        loadTranslations:
+            folder: data/translations
+# CustomAppConfig: # can be renamed, cf. shared/config.go
+#     CustomConfigItem:
+#         - Hello
+#         - World!
