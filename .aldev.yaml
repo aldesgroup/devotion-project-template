@@ -22,6 +22,28 @@ api:
 
 deploying:
     dir: deploy
+    remoteplatform: azure
+    global:
+        name: glo
+        params:
+            resource_ns: ???
+            location: ???
+            identity_sub_name: ???
+            management_sub_name: ???
+            acr_name: ???
+            acr_rg: ???
+            domain_name: ???
+            oauth2_scope_guid: ???
+    environments:
+        - name: dev
+          params:
+              environment_sub_name: ???
+        - name: qua
+          params:
+              environment_sub_name: ???
+        - name: prd
+          params:
+              environment_sub_name: ???
 
 # native:
 #     srcdir: native
