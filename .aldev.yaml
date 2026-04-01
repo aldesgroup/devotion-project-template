@@ -18,7 +18,7 @@ api:
     datadir: data
     watchalso:
         - ../../open/goald
-        - unknown_project
+        - some_custom_project_path
 
 deploying:
     dir: deploy

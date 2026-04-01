@@ -2,7 +2,7 @@
 # our dev server (Tilt) transforms it into a configmap which must be "Kustomized"
 # for the remote environments: sandbox, staging, production
 Common:
-    env: dev
+    env: local
     http:
         port: 55555
         apiPath: /rest
@@ -10,9 +10,9 @@ Common:
     #     - DbID: main
     #       DbType: sqlserver
     #       DbPort: 1433
-    #       DbName: ber-staging
-    #       DbHost: acp-sqlserver.database.windows.net
-    #       User: ber-ws-staging
+    #       DbName: somedb
+    #       DbHost: somesqlserver.database.windows.net
+    #       User: someuser
     #       Password: *****
     dataloaders:
         loadTranslations:
@@ -21,3 +21,4 @@ Common:
 #     CustomConfigItem:
 #         - Hello
 #         - World!
+
