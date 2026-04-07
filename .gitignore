@@ -14,4 +14,7 @@ bin/
 tmp/
 node_modules/
 
-# no fixture data
+# no generated data or code here - because it's a template, and we want each real project to generate its own code
+deploy/
+data/translations/*
+api/conf-*.yaml
