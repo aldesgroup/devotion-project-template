@@ -11,14 +11,18 @@ services:
       # Mounts the host's bin folder to the container.
       # The ':z' tells Podman to relabel the files for SELinux (essential on Fedora/RHEL)
       - ../../bin:/api/bin:z
-      - ../../api:/api/api:z
+      - ../../api:/api/src:z
       - ../../data:/api/data:z
 
     # Executes the binary. Running it directly (not via a shell script) helps with signal handling (SIGTERM)
-    command: ./bin/devotion-project-template-api -config api/apiconf.yaml
+    command: ./bin/devotion-project-template-api -config src/conf-local.yaml --port 42042
+
+    # This allows several services to talk to each other locally
+    networks:
+      - shared-net
 
   # Defines the Load Balancer
-  nginx:
+  dpt_lb:
     # Nginx micro-image maintained by the Fedora/Red Hat community on Quay
     # This is a hardened, small-footprint version of Nginx
     image: quay.io/nginx/nginx-unprivileged:latest
@@ -34,3 +38,11 @@ services:
     depends_on:
       # Ensures the 'go_api' containers are created before Nginx starts looking for them
       - dpt_api
+
+    networks:
+      # The load balancer should be on this network to
+      - shared-net
+
+networks:
+  shared-net:
+    external: true

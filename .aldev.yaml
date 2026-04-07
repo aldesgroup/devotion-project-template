@@ -6,10 +6,9 @@ appname: DevotionProjectTemplate
 languages: fr,de
 
 api:
+    # the config for the development of the API
     srcdir: api
     bindir: ../bin
-    config: apiconf.yaml
-    port: 42042
     i18n:
         links:
             - https://sheets.googleapis.com/v4/spreadsheets/13wVHCo7x0bu4Gdtn5rEvr5OsddVEK0rzVpBbqESTpqE/values/goaldn?key=AIzaSyAFb8qAmo3Wva5cjCg5f-gQ8tNDF6D7QzE
@@ -19,31 +18,70 @@ api:
     watchalso:
         - ../../open/goald
         - some_custom_project_path
+    #localinstances: 3
+    localport: 42042
+    # the actual configuration for the API's runtime
+    runtimes:
+        # what's common to all the environments
+        common:
+            base:
+                # databases:
+                #     - DbID: main
+                #       DbType: sqlserver
+                #       DbPort: 1433
+                #       DbName: somedb
+                #       DbHost: somesqlserver.database.windows.net
+                #       User: someuser
+                #       Password: *****
+                dataloaders:
+                    loadTranslations:
+                        folder: data/translations
+            custom:
+                message: "Hello World!"
+                submodule:
+                    somethreshold: 10
+
+        # this env always exists, and has envtype = LOCAL; other possible values: SANDBOX, STAGING, PRODUCTION
+        local:
+            custom:
+                message: "This is the local app!"
+                submodule:
+                    somethreshold: 50
+        remote:
+            dev:
+                base:
+                    envtype: SANDBOX
+                custom:
+                    message: "This is the local app!"
+                    submodule:
+                        somethreshold: 100
+            qua:
+                base:
+                    envtype: STAGING
+            prd:
+                base:
+                    envtype: PRODUCTION
 
 deploying:
     dir: deploy
-    remoteplatform: azure
+    platform: azure
     global:
-        name: glo
-        params:
-            resource_ns: ???
-            location: ???
-            identity_sub_name: ???
-            management_sub_name: ???
-            acr_name: ???
-            acr_rg: ???
-            domain_name: ???
-            oauth2_scope_guid: ???
+        resource_ns: ???
+        location: ???
+        identity_sub_name: ???
+        management_sub_name: ???
+        acr_name: ???
+        acr_rg: ???
+        domain_name: ???
+        oauth2_scope_guid: ???
+        port: 55555
     environments:
-        - name: dev
-          params:
-              environment_sub_name: ???
-        - name: qua
-          params:
-              environment_sub_name: ???
-        - name: prd
-          params:
-              environment_sub_name: ???
+        dev:
+            environment_sub_name: ???
+        qua:
+            environment_sub_name: ???
+        prd:
+            environment_sub_name: ???
 
 # native:
 #     srcdir: native
@@ -67,20 +105,24 @@ codeswaps:
           - replace: "// replace github.com/aldesgroup/goald => ../../../open/goald"
             with: "replace github.com/aldesgroup/goald => ../../../open/goald"
             eofcom: true
-    # - from: "."
-    #   for: ["tailwind.config.ts"]
-    #   do:
-    #       - replace: '"./src/vendor/emeraldr/styles/aldes-preset"'
-    #         with: '"../../emeraldr/lib/styles/aldes-preset"'
-    # - from: "."
-    #   for: ["*.ts", "*.tsx"]
-    #   do:
-    #       - replace: '"~/vendor/emeraldr"'
-    #         with: '"~/../../../emeraldr/lib"'
-    #       - replace: '"~/vendor/goaldr"'
-    #         with: '"~/../../../goaldr/lib"'
-    # - from: "../emeraldr"
-    #   for: ["*.ts", "*.tsx"]
-    #   do:
-    #       - replace: '"~/vendor/goaldr"'
-    #         with: '"~/../../../goaldr/lib"'
+          - replace: "// replace github.com/aldesgroup/corego => ../../../open/corego"
+            with: "replace github.com/aldesgroup/corego => ../../../open/corego"
+            eofcom: true
+
+# - from: "."
+#   for: ["tailwind.config.ts"]
+#   do:
+#       - replace: '"./src/vendor/emeraldr/styles/aldes-preset"'
+#         with: '"../../emeraldr/lib/styles/aldes-preset"'
+# - from: "."
+#   for: ["*.ts", "*.tsx"]
+#   do:
+#       - replace: '"~/vendor/emeraldr"'
+#         with: '"~/../../../emeraldr/lib"'
+#       - replace: '"~/vendor/goaldr"'
+#         with: '"~/../../../goaldr/lib"'
+# - from: "../emeraldr"
+#   for: ["*.ts", "*.tsx"]
+#   do:
+#       - replace: '"~/vendor/goaldr"'
+#         with: '"~/../../../goaldr/lib"'

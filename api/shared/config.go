@@ -8,15 +8,15 @@ import g "github.com/aldesgroup/goald"
 // registering the config object
 func init() {
 	g.RegisterConfig(&renameThisAppConfig{
-		ICommonConfig: g.NewCommonConfig(),
-		CustomConf:    RenameThisCustomPart{},
+		IBaseConfig: g.NewBaseConfig(),
+		CustomConf:  RenameThisCustomPart{},
 	})
 }
 
 // defining the global config object, that should capture all the YAML file content
 type renameThisAppConfig struct {
-	g.ICommonConfig `json:"Common"`
-	CustomConf      RenameThisCustomPart `json:"RenameThisCustomPart"`
+	g.IBaseConfig `json:"base"`        // do not change the JSON name!
+	CustomConf    RenameThisCustomPart `json:"custom"` // do not change the JSON name!
 }
 
 // making this global config object legit by implementing this required method

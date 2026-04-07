@@ -10,8 +10,8 @@ base:
     dataloaders:
         loadTranslations:
             folder: data/translations
-    envtype: LOCAL
+    envtype: SANDBOX
 custom:
     message: "This is the local app!"
     submodule:
-        somethreshold: 50
+        somethreshold: 100

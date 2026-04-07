@@ -1,7 +1,7 @@
 package reference
 
 import (
-	specs "github.com/aldesgroup/devotion-project-template/_include/_specs"
+	"github.com/aldesgroup/devotion-project-template/_include/reference/model"
 	"github.com/aldesgroup/goald"
 )
 
@@ -12,5 +12,5 @@ type Contact struct {
 }
 
 func init() {
-	specs.Contact().SetNotPersisted()
+	model.Contact().SetNotPersisted()
 }
