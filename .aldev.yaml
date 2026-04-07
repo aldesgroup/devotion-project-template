@@ -64,6 +64,7 @@ api:
 
 deploying:
     dir: deploy
+    cicd: gitlab
     platform: azure
     global:
         resource_ns: ???
