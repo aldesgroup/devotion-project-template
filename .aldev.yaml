@@ -24,6 +24,7 @@ api:
     runtimes:
         # what's common to all the environments
         common:
+            port: 55555
             base:
                 # databases:
                 #     - DbID: main
@@ -43,6 +44,7 @@ api:
 
         # this env always exists, and has envtype = LOCAL; other possible values: SANDBOX, STAGING, PRODUCTION
         local:
+            port: 42069
             custom:
                 message: "This is the local app!"
                 submodule:
@@ -58,31 +60,43 @@ api:
             qua:
                 base:
                     envtype: STAGING
+                custom:
+                    message: "This is the STAGING app! I mean, QUA!! Upgraded, yeah!"
+                    submodule:
+                        somethreshold: 42
             prd:
                 base:
                     envtype: PRODUCTION
-
+                custom:
+                    message: "THIS. IS. PRODUCTION!!!"
+                    submodule:
+                        somethreshold: 111
 deploying:
     dir: deploy
-    cicd: gitlab
-    platform: azure
-    global:
-        resource_ns: ???
-        location: ???
-        identity_sub_name: ???
-        management_sub_name: ???
-        acr_name: ???
-        acr_rg: ???
-        domain_name: ???
-        oauth2_scope_guid: ???
-        port: 55555
-    environments:
-        dev:
-            environment_sub_name: ???
-        qua:
-            environment_sub_name: ???
-        prd:
-            environment_sub_name: ???
+    cicd:
+        type: gitlab
+        config:
+            gitlab_cid: ???
+            gitlab_url: ???
+    platform:
+        type: azure
+        config:
+            global:
+                resource_ns: ??
+                location: ??
+                identity_sub_name: ??
+                management_sub_name: ??
+                acr_name: ??
+                acr_rg: ??
+                domain_name: ??
+                oauth2_scope_guid: ??
+            environments:
+                dev:
+                    environment_sub_name: ??
+                qua:
+                    environment_sub_name: ??
+                prd:
+                    environment_sub_name: ??
 
 # native:
 #     srcdir: native
