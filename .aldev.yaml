@@ -2,8 +2,10 @@
 # Configuration file about how we're developing the app called: #
 # ============================================================= #
 appname: DevotionProjectTemplate
-
+appdesc: My brand new Devotion project (TODO: write a description)
 languages: fr,de
+
+# privategit: my-git.mydomain.com
 
 api:
     # the config for the development of the API
@@ -15,11 +17,15 @@ api:
         keysize: 48
         folder: translations
     datadir: data
+    docpath: data/api-doc.yaml
+    docreport: data/api-doc-report.html
+    browser: chromium
     watchalso:
         - ../../open/goald
+        - ../../open/corego
+        - ../../private/emerald
         - some_custom_project_path
     #localinstances: 3
-    localport: 42042
     # the actual configuration for the API's runtime
     runtimes:
         # what's common to all the environments
