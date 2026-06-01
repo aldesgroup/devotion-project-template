@@ -2,7 +2,7 @@
 # Configuration file about how we're developing the app called: #
 # ============================================================= #
 appname: DevotionProjectTemplate
-appdesc: My brand new Devotion project (TODO: write a description)
+appdesc: My brand new Devotion project (TODO write a description)
 languages: fr,de
 
 # privategit: my-git.mydomain.com
