@@ -1,9 +1,9 @@
 module github.com/aldesgroup/devotion-project-template
 
-go 1.26.1
+go 1.26.3
 
 require (
-	github.com/aldesgroup/corego v0.0.0-20260403082900-388345500b9a
+	github.com/aldesgroup/corego v0.0.0-20260518143233-b6959e31c918
 	github.com/aldesgroup/goald v0.0.0-20260408074830-865c686b1151
 )
 

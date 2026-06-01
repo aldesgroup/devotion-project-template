@@ -94,6 +94,8 @@ deploying:
                 management_sub_name: ??
                 acr_name: ??
                 acr_rg: ??
+                apim_name: ??
+                apim_rg: ??
                 domain_name: ??
                 oauth2_scope_guid: ??
             environments:
