@@ -1,0 +1,72 @@
+components:
+    schemas:
+        Translation:
+            description: A text in a given language, identified by a namespace and a key
+            properties:
+                id:
+                    description: the unique identifier of the Translation
+                    format: int64
+                    readOnly: true
+                    type: integer
+                key:
+                    description: the key of the translation
+                    readOnly: true
+                    type: string
+                lang:
+                    description: the language code (e.g. 'en', 'fr', 'de', etc.)
+                    type: string
+                namespace:
+                    description: the namespace of the translation
+                    type: string
+                value:
+                    description: the value of the translation
+                    readOnly: true
+                    type: string
+            required:
+                - lang
+            type: object
+info:
+    description: My brand new Devotion project (TODO write a description)
+    title: DevotionProjectTemplate
+    version: v0.0.1
+openapi: 3.0.3
+paths:
+    /rest/translation/{Lang}:
+        get:
+            description: Returns the translations for the given route
+            operationId: get/rest/translation/Lang
+            parameters:
+                - description: 'URL path parameter: the language code (e.g. ''en'', ''fr'', ''de'', etc.)'
+                  in: path
+                  name: Lang
+                  required: true
+                  schema:
+                    type: string
+                - description: 'URL query Parameter: the key for the unique translation to retrieve'
+                  in: query
+                  name: Key
+                  schema:
+                    description: the key for the unique translation to retrieve
+                    type: string
+                - description: 'URL query Parameter: the namespace of the translation keys to retrieve (e.g. ''Common'')'
+                  in: query
+                  name: Namespace
+                  schema:
+                    description: the namespace of the translation keys to retrieve (e.g. 'Common')
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Translation'
+                    description: OK
+            summary: List translations
+            tags:
+                - General
+servers:
+    - description: The local development environment
+      url: http://localhost:42069
+tags:
+    - description: Generic endpoints for common behaviors
+      name: General

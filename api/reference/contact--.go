@@ -7,10 +7,11 @@ import (
 
 type Contact struct {
 	goald.BusinessObject
-	FirstName string
-	LastName  string
+	FirstName string `json:"firstName" io:"i*" desc:"the contact's first name"`
+	LastName  string `json:"lastName"  io:"i*" desc:"the contact's last name"`
 }
 
 func init() {
+	model.Contact().SetDescription("A contact")
 	model.Contact().SetNotPersisted()
 }

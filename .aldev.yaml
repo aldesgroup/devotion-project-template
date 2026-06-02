@@ -79,32 +79,32 @@ api:
                         somethreshold: 111
 deploying:
     dir: deploy
-    cicd:
-        type: gitlab
-        config:
-            gitlab_cid: ???
-            gitlab_url: ???
-    platform:
-        type: azure
-        config:
-            global:
-                resource_ns: ??
-                location: ??
-                identity_sub_name: ??
-                management_sub_name: ??
-                acr_name: ??
-                acr_rg: ??
-                apim_name: ??
-                apim_rg: ??
-                domain_name: ??
-                oauth2_scope_guid: ??
-            environments:
-                dev:
-                    environment_sub_name: ??
-                qua:
-                    environment_sub_name: ??
-                prd:
-                    environment_sub_name: ??
+    # cicd:
+    #     type: gitlab
+    #     config:
+    #         gitlab_cid: ???
+    #         gitlab_url: ???
+    # platform:
+    #     type: azure
+    #     config:
+    #         global:
+    #             resource_ns: ??
+    #             location: ??
+    #             identity_sub_name: ??
+    #             management_sub_name: ??
+    #             acr_name: ??
+    #             acr_rg: ??
+    #             apim_name: ??
+    #             apim_rg: ??
+    #             domain_name: ??
+    #             oauth2_scope_guid: ??
+    #         environments:
+    #             dev:
+    #                 environment_sub_name: ??
+    #             qua:
+    #                 environment_sub_name: ??
+    #             prd:
+    #                 environment_sub_name: ??
 
 # native:
 #     srcdir: native
