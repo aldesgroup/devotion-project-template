@@ -25,4 +25,4 @@ cd foo-bar
 
 This creates a new project `FooBar` then git-sync it with `my-git.my-domain.com/group_name[/subgroup]/foo-bar`.
 
-After that, you're ready to [start working with your new project].
+After that, you're ready to [start working with your new project](https://aldesgroup.github.io/devotion/docs/start/bootstrap#working-with-the-new-api).

@@ -91,9 +91,10 @@ deploying:
     #             resource_ns: ??
     #             location: ??
     #             identity_sub_name: ??
-    #             management_sub_name: ??
+    #             acr_sub_name: ??
     #             acr_name: ??
     #             acr_rg: ??
+    #             apim_sub_name: ??
     #             apim_name: ??
     #             apim_rg: ??
     #             domain_name: ??
@@ -105,6 +106,10 @@ deploying:
     #                 environment_sub_name: ??
     #             prd:
     #                 environment_sub_name: ??
+    #                 # overrides for production
+    #                 apim_sub_name: ??
+    #                 apim_name: ??
+    #                 apim_rg: ??
 
 # native:
 #     srcdir: native
